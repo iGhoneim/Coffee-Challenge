@@ -1,9 +1,8 @@
 import {BaseEntity, Entity, OneToMany, PrimaryColumn} from "typeorm";
 import Pod from "./Pod";
-import {JsonClassType, JsonIgnore, JsonProperty, JsonRootName} from "jackson-js";
+import {JsonClassType, JsonIgnore, JsonProperty} from "jackson-js";
 
 @Entity()
-@JsonRootName({value: ''})
 export default class Flavor extends BaseEntity {
 
     @PrimaryColumn({name: 'coffee_flavor'})

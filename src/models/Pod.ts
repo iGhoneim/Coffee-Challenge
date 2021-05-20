@@ -2,10 +2,9 @@ import {BaseEntity, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn} from "t
 import Flavor from "./Flavor";
 import Size from "./Size";
 import Product from "./Product";
-import {JsonClassType, JsonIgnore, JsonManagedReference, JsonProperty, JsonRootName} from "jackson-js";
+import {JsonClassType, JsonIgnore, JsonManagedReference, JsonProperty} from "jackson-js";
 
 @Entity()
-@JsonRootName({value: ''})
 export default class Pod extends BaseEntity {
 
     @PrimaryGeneratedColumn()

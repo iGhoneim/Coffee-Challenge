@@ -1,9 +1,10 @@
-import Machine from "../models/Machine";
+import {MachinesView} from "../views/MachinesView";
+import {getRepository} from "typeorm";
 
 export default class MachinesService {
 
-    getMachines(): Promise<Machine[]> {
-        return Machine.find();
+    getMachines(): Promise<MachinesView[]> {
+        return getRepository(MachinesView).find();
     }
 
 }

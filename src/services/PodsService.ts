@@ -1,8 +1,9 @@
-import Pod from "../models/Pod";
+import {getRepository} from "typeorm";
+import {PodsView} from "../views/PodsView";
 
 export default class PodsService {
 
-    getPods(): Promise<Pod[]> {
-        return Pod.find();
+    getPods(): Promise<PodsView[]> {
+        return getRepository(PodsView).find();
     }
 }
