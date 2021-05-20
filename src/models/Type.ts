@@ -1,9 +1,8 @@
 import {BaseEntity, Entity, OneToMany, PrimaryColumn} from "typeorm";
 import Product from "./Product";
-import {JsonClassType, JsonIgnore, JsonProperty, JsonRootName} from "jackson-js";
+import {JsonClassType, JsonIgnore, JsonProperty} from "jackson-js";
 
 @Entity()
-@JsonRootName({value: ''})
 export default class Type extends BaseEntity {
 
     @PrimaryColumn({name: 'product_type'})

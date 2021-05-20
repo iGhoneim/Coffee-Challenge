@@ -9,13 +9,14 @@ const pods = require('./pods.json');
 
 class Seeder {
 
-    private static async cleanDatabase() {
-        const entities = getConnection().entityMetadatas;
-        for (const entity of entities) {
-            await getConnection()
-                .getRepository(entity.name)
-                .clear();
-        }
+    private static cleanDatabase() {
+        getConnection().entityMetadatas
+            .filter(entity => !entity.name.endsWith('View'))
+            .forEach(async entity => {
+                await getConnection()
+                    .getRepository(entity.name)
+                    .clear();
+            });
         console.log('Database cleaned!');
     }
 
@@ -24,16 +25,14 @@ class Seeder {
             .then(() => {
                 console.log("Database connected!")
                 Seeder.cleanDatabase()
-                    .then(() => {
-                        this.seedMachines();
-                        this.seedPods();
-                    });
+                this.seedMachines();
+                this.seedPods();
             })
             .catch(reason => console.error(reason));
     }
 
     private seedMachines() {
-        let models = machines
+        const models = machines
             .map(machine => new MachineTransformer().transform(JSON.stringify(machine)));
         Machine.save(models)
             .then(() => console.log('Machines seeded!'))
@@ -41,7 +40,7 @@ class Seeder {
     }
 
     private seedPods() {
-        let models = pods
+        const models = pods
             .map(pod => new PodTransformer().transform(JSON.stringify(pod)));
         Pod.save(models)
             .then(() => console.log('Pods seeded!'))

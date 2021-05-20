@@ -1,9 +1,13 @@
-import Machine from "../models/Machine";
+import {MachinesView} from "../views/MachinesView";
+import {getRepository, Like} from "typeorm";
 
 export default class MachinesService {
 
-    getMachines(): Promise<Machine[]> {
-        return Machine.find();
+    getMachines(productType: any, waterLine: any) {
+        return getRepository(MachinesView)
+            .find({
+                productType: Like(productType ? productType : '%'),
+                waterLineCompatible: Like(waterLine ? waterLine : '%')
+            });
     }
-
 }

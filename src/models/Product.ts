@@ -1,9 +1,8 @@
-import {BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import Type from "./Type";
-import {JsonClassType, JsonIgnore, JsonManagedReference, JsonProperty, JsonRootName} from "jackson-js";
+import {JsonClassType, JsonIgnore, JsonManagedReference, JsonProperty} from "jackson-js";
 
 @Entity()
-@JsonRootName({value: ''})
 export default class Product extends BaseEntity {
 
     @PrimaryGeneratedColumn()
@@ -16,6 +15,7 @@ export default class Product extends BaseEntity {
     sku: string;
 
     @ManyToOne(() => Type, type => type.products, {cascade: true})
+    @JoinColumn({name: 'productTypeId'})
     @JsonProperty()
     @JsonClassType({type: () => [Type]})
     @JsonManagedReference({value: 'productType'})
