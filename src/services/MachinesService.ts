@@ -7,7 +7,7 @@ export default class MachinesService {
         return getRepository(MachinesView)
             .find({
                 productType: Like(productType ? productType : '%'),
-                waterLineCompatible: Like(waterLine ? waterLine : '%')
+                waterLine: Like(waterLine ? waterLine : '%')
             });
     }
 }
