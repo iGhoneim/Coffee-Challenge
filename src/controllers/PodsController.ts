@@ -16,7 +16,10 @@ export default class PodsController implements IController {
     }
 
     getMachines = async (request: express.Request, response: express.Response, next: express.NextFunction) => {
-        await this.podsService.getPods()
+        const productType = request.query.productType;
+        const coffeeFlavor = request.query.coffeeFlavor;
+        const packSize = request.query.packSize;
+        await this.podsService.getPods(productType, coffeeFlavor, packSize)
             .then(pods => response.send(pods))
             .catch(err => next(err));
     }

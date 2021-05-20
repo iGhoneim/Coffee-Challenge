@@ -1,4 +1,4 @@
-import {BaseEntity, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn} from "typeorm";
 import Flavor from "./Flavor";
 import Size from "./Size";
 import Product from "./Product";
@@ -12,6 +12,7 @@ export default class Pod extends BaseEntity {
     id: number;
 
     @OneToOne(() => Product, {cascade: true})
+    @JoinColumn()
     @JsonProperty()
     @JsonClassType({type: () => [Product]})
     @JsonManagedReference()

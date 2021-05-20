@@ -16,7 +16,9 @@ export default class MachinesController implements IController {
     }
 
     getMachines = async (request: express.Request, response: express.Response, next: express.NextFunction) => {
-        await this.machinesService.getMachines()
+        const productType = request.query.productType;
+        const waterLine = request.query.waterLine;
+        await this.machinesService.getMachines(productType, waterLine)
             .then(machines => response.send(machines))
             .catch(err => next(err));
     }

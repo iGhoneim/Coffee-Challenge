@@ -7,15 +7,15 @@ import Pod from "../models/Pod";
 
 @ViewEntity({
     expression: (connection: Connection) => connection.createQueryBuilder()
-        .addSelect("p.sku", 'sku')
-        .addSelect("t.productType", 'productType')
-        .addSelect("f.coffeeFlavor", 'coffeeFlavor')
-        .addSelect("s.packSize", 'packSize')
-        .from(Pod, "m")
-        .leftJoin(Product, "p")
-        .leftJoin(Type, "t")
-        .leftJoin(Flavor, "f")
-        .leftJoin(Size, "s")
+        .addSelect("product.sku", 'sku')
+        .addSelect("type.productType", 'productType')
+        .addSelect("flavor.coffeeFlavor", 'coffeeFlavor')
+        .addSelect("size.packSize", 'packSize')
+        .from(Pod, "pod")
+        .leftJoin(Product, "product", "product.id = pod.productId")
+        .leftJoin(Type, "type", "type.productType = product.productType")
+        .leftJoin(Flavor, "flavor", "flavor.coffeeFlavor = pod.coffeeFlavor")
+        .leftJoin(Size, "size", "size.packSize = pod.packSize")
 })
 export class PodsView {
 

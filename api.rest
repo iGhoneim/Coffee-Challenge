@@ -3,5 +3,5 @@ GET http://localhost:8080/machines
 Accept: application/json
 
 ### Pods
-GET http://localhost:8080/machines
+GET http://localhost:8080/pods
 Accept: application/json

@@ -1,4 +1,4 @@
-import {BaseEntity, Column, Entity, OneToOne, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn} from "typeorm";
 import Product from "./Product";
 import {JsonClassType, JsonIgnore, JsonManagedReference, JsonProperty} from "jackson-js";
 
@@ -10,6 +10,7 @@ export default class Machine extends BaseEntity {
     id: number;
 
     @OneToOne(() => Product, {cascade: true})
+    @JoinColumn()
     @JsonProperty()
     @JsonClassType({type: () => [Product]})
     @JsonManagedReference()

@@ -5,12 +5,12 @@ import Machine from "../models/Machine";
 
 @ViewEntity({
     expression: (connection: Connection) => connection.createQueryBuilder()
-        .select("m.waterLineCompatible", 'waterLineCompatible')
-        .addSelect("p.sku", 'sku')
-        .addSelect("t.productType", 'productType')
-        .from(Machine, "m")
-        .leftJoin(Product, "p")
-        .leftJoin(Type, "t")
+        .select("machine.waterLineCompatible", 'waterLineCompatible')
+        .addSelect("product.sku", 'sku')
+        .addSelect("type.productType", 'productType')
+        .from(Machine, "machine")
+        .leftJoin(Product, "product", "product.id = machine.productId")
+        .leftJoin(Type, "type", "type.productType = product.productType")
 })
 export class MachinesView {
 
