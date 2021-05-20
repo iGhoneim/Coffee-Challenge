@@ -1,0 +1,7 @@
+### Machines
+GET http://localhost:8080/machines
+Accept: application/json
+
+### Pods
+GET http://localhost:8080/machines
+Accept: application/json

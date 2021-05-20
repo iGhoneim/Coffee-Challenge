@@ -1,0 +1,30 @@
+{
+  "name": "coffee-challenge",
+  "version": "1.0.0",
+  "description": "Swenson He",
+  "scripts": {
+    "seed": "ts-node db/Seeder.ts",
+    "dev": "ts-node-dev --respawn --transpile-only api.ts",
+    "start": "ts-node api.ts"
+  },
+  "keywords": [],
+  "author": "Ahmed Ghoneim",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "jackson-js": "^1.1.0",
+    "reflect-metadata": "^0.1.13",
+    "sql.js": "^1.5.0",
+    "typeorm": "^0.2.32"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/node": "^15.3.0",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.6",
+    "tslint": "^6.1.3",
+    "typescript": "^4.2.4",
+    "typescript-ioc": "^3.2.2"
+  }
+}

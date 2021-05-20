@@ -1,0 +1,10 @@
+{
+  "type": "sqljs",
+  "autoSave": true,
+  "location": "db/database.js",
+  "synchronize": true,
+  "logging": false,
+  "entities": [
+    "src/models/*.ts"
+  ]
+}
