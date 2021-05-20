@@ -1,7 +1,23 @@
-### Machines
-GET http://localhost:8080/machines
+### All large machines
+GET localhost:8080/machines?productType=COFFEE_MACHINE_LARGE
 Accept: application/json
 
-### Pods
-GET http://localhost:8080/pods
+### All large pods
+GET http://localhost:8080/pods?productType=COFFEE_POD_LARGE
+Accept: application/json
+
+### All espresso vanilla pods
+GET http://localhost:8080/pods?productType=ESPRESSO_POD&coffeeFlavor=COFFEE_FLAVOR_VANILLA
+Accept: application/json
+
+### All espresso machines
+GET http://localhost:8080/machines?productType=ESPRESSO_MACHINE
+Accept: application/json
+
+### All small pods
+GET http://localhost:8080/pods?productType=COFFEE_POD_SMALL
+Accept: application/json
+
+### All pods sold in 7 dozen packs
+GET http://localhost:8080/pods?packSize=7
 Accept: application/json

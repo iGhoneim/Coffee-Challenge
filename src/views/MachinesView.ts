@@ -5,7 +5,7 @@ import Machine from "../models/Machine";
 
 @ViewEntity({
     expression: (connection: Connection) => connection.createQueryBuilder()
-        .select("machine.waterLineCompatible", 'waterLineCompatible')
+        .select("machine.waterLineCompatible", 'waterLine')
         .addSelect("product.sku", 'sku')
         .addSelect("type.productType", 'productType')
         .from(Machine, "machine")
@@ -21,5 +21,5 @@ export class MachinesView {
     productType: string;
 
     @ViewColumn()
-    waterLineCompatible: string;
+    waterLine: string;
 }
