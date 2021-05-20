@@ -1,5 +1,5 @@
 ### All large machines
-GET localhost:8080/machines?productType=COFFEE_MACHINE_LARGE
+GET http://localhost:8080/machines?productType=COFFEE_MACHINE_LARGE
 Accept: application/json
 
 ### All large pods
